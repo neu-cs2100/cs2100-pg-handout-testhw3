@@ -12,6 +12,8 @@ By completing this assignment, you will demonstrate proficiency in:
 * Critical thinking about algorithmic bias and social equity
 
 ## Overview
+Note: This assignment is an extension to the previous assignment (HW 2), in which you wrote tests for the sorting and data_loader modules. In this assignment, you will implement these modules yourself. In addition to this, you will also create a visualization tool to plot the location of the cases on a map, and perform equity analysis on the data based on different metrics.
+
 You will analyze 311 service request data to explore how municipal services are distributed across different neighborhoods and demographics. 311 systems allow residents to report non-emergency issues like potholes, broken streetlights, noise complaints, and other quality-of-life concerns.
 
 ### Dataset Options
@@ -26,9 +28,9 @@ Your analysis must include the following components:
 
 #### 1. Data Loading and Exploration (`data_loader.py`)
 * Load the 311 cases dataset using Pandas
-* Display basic information about the dataset (shape, columns, data types)
+* Get basic information about the dataset (shape, columns, data types)
 * Identify and handle missing values
-* Calculate summary statistics
+* Filter dataset by provided list of neighborhoods
 
 #### 2. Data Processing and Sorting (`sorting.py`)
 * **Add Duration Column**: Calculate how long each request was open (in days)
@@ -39,6 +41,11 @@ Your analysis must include the following components:
   - Document your reasoning for each ranking in your summary
 * **Sort by Urgency**: Sort cases using your custom urgency ranking
 * **Filter Data**: Create a filtered dataset containing only the categories you've ranked
+
+
+Note: In the previous assignment, the urgency score was calculated based on the 
+number of times each category appeared in the dataset. In this assignment, you should choose your own ranking system and implement it. Make sure you document your choice of ranking system in summary.md.
+
 
 #### 3. Geographic Visualization (`visualization.py`)
 * Create a scatter plot map showing the geographic distribution of 311 cases

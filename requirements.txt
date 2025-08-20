@@ -1,2 +1,7 @@
 coverage
 pylint
+seaborn
+types-seaborn
+pandas
+numpy
+pandas-stubs

@@ -2,32 +2,25 @@
 sorting.py
 Module responsible for sorting 311 cases and managing urgency rankings.
 Combines sorting and urgency functions as they work together conceptually.
-Updated
 """
 
 import pandas as pd
-import numpy as np
 
-class Sorting:
+class CaseSorter:
     """
-    Class responsible for sorting 311 cases and managing urgency rankings.
-    Combines sorting and urgency functions as they work together conceptually.
+    Class for sorting and ranking 311 cases.
     """
-    
-    def __init__(self, data=None):
-        self.data = data
-        self.urgency_ranking = {}
-        self.filtered_data = None
-    
-    def set_data(self, data):
-        """Set the dataset for this sorter."""
-        self.data = data
-    
-    def sort_by_days_open(self, ascending=False):
+
+    def __init__(self) -> None:
+        """Initialize CaseSorter, no parameters needed."""
+        pass
+
+    def sort_by_days_open(self, df: pd.DataFrame, ascending: bool = False) -> pd.DataFrame:
         """
         Sort the 311 cases by how long they were open.
         
         Args:
+            df (pd.DataFrame): The 311 cases dataset
             ascending (bool): If True, sort from shortest to longest duration
             
         Returns:
@@ -37,75 +30,64 @@ class Sorting:
             KeyError: If 'days_open' column doesn't exist
             ValueError: If days_open contains non-numeric values
         """
-        if self.data is None:
-            raise ValueError("No data set. Please call set_data() first.")
-        
-        # TODO: Sort the data by days_open
-        # TODO: Handle errors for missing column or non-numeric values
         pass
-    
-    def create_urgency_ranking(self):
+    def create_urgency_ranking(self, df: pd.DataFrame) -> dict[str, int]:
         """
         Create an urgency ranking system for 311 case categories.
         
-        ETHICS QUESTION FOR STUDENTS: (Will add these in the summary file)
-        How do you decide which issues are most "urgent"? 
-        Consider factors like:
-        - Public safety and health impacts
-        - Economic consequences
-        - Equity and access issues
-        - Community impact and quality of life
-        - Infrastructure and long-term effects
-        
+        Args:
+            df (pd.DataFrame): The 311 cases dataset
+            
         Returns:
-            dict: Dictionary mapping categories to urgency scores (1 = most urgent, higher = less urgent)
-        """
-        if self.data is None:
-            raise ValueError("No data set. Please call set_data() first.")
+            Dict[str, int]: Dictionary mapping categories to urgency scores 
+                           (1 = most urgent, higher = less urgent)
+
+            You may choose to assign an urgency ranking based on your own criteria,
+            but make sure to document your choices in the summary.md file
             
-        if 'category' not in self.data.columns:
-            print("Warning: 'category' column not found in dataset")
-            return {}
-        
-        # Get all unique categories
-        categories = self.data['category'].unique()
-        print("Available categories in your dataset:")
-        print("-" * 40)
-        for i, cat in enumerate(sorted(categories), 1):
-            print(f"{i:2d}. {cat}")
-        
-        print(f"\nTotal categories: {len(categories)}")
-        
-        # TODO: Students should create their urgency ranking here
-        # This is a placeholder - students should modify this based on their reasoning
-        # Lower numbers = more urgent (1 is most urgent)
-        self.urgency_ranking = {
-            # EXAMPLE (students should replace with their own reasoning):
-            # 'Traffic Signal Repair': 1,           # Immediate safety risk
-            # 'Street Defects': 2,                 # Safety and accessibility 
-            # 'Blocked Bike Lane': 3,              # Safety and transportation
-            # 'Street and Sidewalk Cleaning': 4,   # Quality of life
-            #  And so on
-            
-            # TODO: Add rankings for at least 10 categories found in your dataset
-            # Use the list above to assign urgency scores (1-10 scale recommended)
-        }
-        
-        return self.urgency_ranking
-    
-    def filter_data(self):
+        Raises:
+            KeyError: If 'Category' column doesn't exist
         """
-        Filter the dataset to include only the categories that have been ranked.
+        pass
+
+    def filter_data(self, df: pd.DataFrame, urgency_ranking: dict[str, int]) -> pd.DataFrame:
+        """
+        Filter the dataset to include only the categories that have been ranked 
+        (ie. the keys of urgency_ranking).
         
+        Args:
+            df (pd.DataFrame): The 311 cases dataset
+            urgency_ranking (Dict[str, int]): Urgency ranking dictionary
+            
         Returns:
             pd.DataFrame: Filtered dataset
-        """
-        if self.data is None:
-            raise ValueError("No data set. Please call set_data() first.")
             
-        if not self.urgency_ranking:
-            raise ValueError("No urgency ranking created. Please call create_urgency_ranking() first.")
+        Raises:
+            ValueError: If urgency_ranking is empty
+            ValueError: If no data matches the filter
+            KeyError: If 'category' column doesn't exist
+        """
+        pass
+
+    def sort_by_urgency(self, df: pd.DataFrame, urgency_ranking: dict[str, int]) -> pd.DataFrame:
+        """
+        Sort 311 cases by urgency ranking.
         
-        # TODO: Filter the dataset to include only the categories you have ranked
-        # Store result in self.filtered_data
+        Args:
+            df (pd.DataFrame): The 311 cases dataset
+            urgency_ranking (Dict[str, int]): Dictionary mapping categories to urgency scores, 
+            higher urgency score is more urgent.
+
+            If multiple cases are in the same category, they are sorted by days_open (descending).
+            (Cases that have been open longer are considered more urgent)
+            
+        Returns:
+            pd.DataFrame: Dataset sorted by urgency (most urgent first)
+            
+        Raises:
+            ValueError: If urgency_ranking is empty
+            ValueError: If 'days_open' contains non-numeric values
+            ValueError: If any category in the dataset is missing from urgency_ranking
+            KeyError: If 'category' column doesn't exist
+        """
         pass
