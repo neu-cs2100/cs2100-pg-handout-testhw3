@@ -54,18 +54,6 @@ Please answer all the questions below after writing the stakeholder-value matrix
 
 ---
 
-## Technical Implementation
-
-### Biggest Challenges
-*What were the most difficult technical aspects of this assignment? How did you overcome them?*  
-*Answer:*
-
-### Key Insights from Data
-*What surprised you most about the patterns in your dataset? What insights emerged that you didn't expect?*  
-*Answer:*
-
----
-
 ## Citations
 
 ### Who did you work with and how?  
