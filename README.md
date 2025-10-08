@@ -1,5 +1,10 @@
 > [!CAUTION]
 > This repository is for viewing only. Do not work on the assignment using this repository -- the actual course assignments will be provided to you via Pawtograder.
+>
+> Note: It is generally not recommended to use the entire dataset in tests.
+> Note: You can assume the same `example_CSVs` directory from HW2 is also there in the autograder for HW3 (so you can reuse the tests)
+
+
 
 # Homework 3: 311 Service Request Analysis
 
